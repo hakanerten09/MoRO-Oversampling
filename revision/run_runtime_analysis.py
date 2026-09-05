@@ -55,8 +55,8 @@ Dependencies
 pip install numpy pandas scikit-learn imbalanced-learn openml smote-variants
 
 Place this file in the SAME DIRECTORY as:
-    revised_code.py
-    moro_smoteipf_kwsmote_resmote.py
+    run_revised_benchmark.py
+    run_recent_baselines.py
 """
 
 from __future__ import annotations
@@ -105,8 +105,8 @@ try:
     )
 except Exception as exc:
     raise ImportError(
-        "\nCould not import MoRO implementation from revised_code.py.\n"
-        "Put this runtime script in the same folder as revised_code.py.\n"
+        "\nCould not import MoRO implementation from run_revised_benchmark.py.\n"
+        "Put this runtime script in the same folder as run_revised_benchmark.py.\n"
         f"Original error: {repr(exc)}"
     ) from exc
 
@@ -125,7 +125,7 @@ try:
 except Exception as exc:
     raise ImportError(
         "\nCould not import recent-baseline implementations from "
-        "moro_smoteipf_kwsmote_resmote.py.\n"
+        "run_recent_baselines.py.\n"
         "Put this runtime script in the same folder as that file.\n"
         f"Original error: {repr(exc)}"
     ) from exc
@@ -222,7 +222,7 @@ def make_preprocessor() -> Pipeline:
 # ---------------------------------------------------------------------
 def make_moro_g(use_gate: bool):
     """
-    Exact defaults used in revised_code.py.
+    Exact defaults used in run_revised_benchmark.py.
     """
     return MoROGSampler(
         k_neighbors=5,
@@ -675,7 +675,7 @@ def main():
         f.write("classifier_training_timed=False\n")
         f.write(
             "RE-SMOTE implementation="
-            "RESMOTE2024Compat from moro_smoteipf_kwsmote_resmote.py\n"
+            "RESMOTE2024Compat from run_recent_baselines.py\n"
         )
         f.write(
             "SMOTE-IPF implementation="
