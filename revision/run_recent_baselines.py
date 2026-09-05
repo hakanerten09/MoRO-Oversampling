@@ -43,7 +43,7 @@ pip install numpy pandas scikit-learn openml smote-variants
 
 Run
 ---
-python moro_smoteipf_kwsmote_resmote.py
+python revision/run_recent_baselines.py
 
 Outputs
 -------
