@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-MoRO v3: (MoRO-G(v3) + MoRO-Mix(full,v3)) with "retry + fallback accept"
-Only MoRO is changed compared to your working v2 pipeline.
-Everything else (datasets, baselines, evaluation, reports) is kept the same.
-
 Run:
   python pipeline_v3.py
 
@@ -247,7 +243,7 @@ def fit_resample_safe(sampler_name: str, sampler_obj: Any, X_tr: np.ndarray, y_t
 
 
 # =========================
-# MoRO v3: helpers + samplers
+# MoRO: helpers + samplers
 # =========================
 @dataclass
 class MoRODiagV3:
@@ -302,12 +298,6 @@ def _borderline_flag_from_local_mix(
 
 
 class MoROGSamplerV3:
-    """
-    MoRO-G(v3): same as v2 BUT
-      - retry generation when gate rejects (prevents "no synthesis" drift toward None)
-      - fallback accept after max_attempts to guarantee balancing
-      - clip accept probability to [p_floor, p_ceil] for stability
-    """
     def __init__(
         self,
         k_neighbors: int = 5,
@@ -551,9 +541,6 @@ def _gower_dm_do_means(
 
 
 class MoROMixSamplerV3:
-    """
-    MoRO-Mix(full,v3): same as v2 BUT retry+fallback, prob clipping.
-    """
     def __init__(
         self,
         num_indices: List[int],
@@ -953,7 +940,7 @@ def get_models(n_classes: int) -> Dict[str, Any]:
 
 
 # =========================
-# Evaluation loop (UNCHANGED)
+# Evaluation loop
 # =========================
 def main():
     print("=" * 70)
@@ -1212,11 +1199,7 @@ def main():
     except Exception as e:
         print("\n[WARN] ESWA extra reports failed:", repr(e))
 
-
-# ======================================================================
 # =====================  ESWA REPORTING MODULE  =========================
-# (Same as your v2 + ΔF1 distribution plot)
-# ======================================================================
 
 def _holm_adjust(pvals: np.ndarray) -> np.ndarray:
     pvals = np.asarray(pvals, dtype=float)
