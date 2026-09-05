@@ -35,7 +35,11 @@ Outputs (new files only):
 - sensitivity_run_info.txt
 
 Run:
-    python moro_sensitivity_numeric.py
+    python run_sensitivity_analysis.py
+
+Run from the repository root:
+    python revision/run_sensitivity_analysis.py
+
 """
 
 from __future__ import annotations
