@@ -5,7 +5,10 @@ Existing experimental pipeline is preserved; revision functionality is added wit
 Everything else (datasets, baselines, evaluation, reports) is kept the same.
 
 Run:
-  python pipeline_revision.py
+  python run_revised_benchmark.py
+
+Run from the repository root:
+  python revision/run_revised_benchmark.py
 
 Outputs:
   results_raw_folds.csv
